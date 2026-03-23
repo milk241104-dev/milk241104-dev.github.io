@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>らいなう | Profile Link</title>
+  <meta
+    name="description"
+    content="らいなうの配信先と映像リンクをまとめた、横型プロフィールのリンク集ページ。"
+  >
+  <meta name="theme-color" content="#6a51ba">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="ambient ambient-c" aria-hidden="true"></div>
+
+  <main class="page">
+    <section class="profile-layout" aria-labelledby="page-title">
+      <aside class="visual-column">
+        <p class="badge duotone-text" id="page-badge">Bloom Link Hub</p>
+
+        <figure class="hero-media">
+          <img id="artist-photo" src="./hero-photo.png" alt="らいなうのプロフィール写真">
+        </figure>
+      </aside>
+
+      <header class="intro-block">
+        <p class="eyebrow duotone-text" id="page-eyebrow">Creator／Artist</p>
+        <h1 id="page-title" class="duotone-text">Rainau</h1>
+        <p class="roman-name" id="page-roman-name">らいなう</p>
+        <p class="tagline" id="page-tagline">
+          音楽と映像を作っています。
+        </p>
+      </header>
+
+      <section class="links-panel" aria-labelledby="links-heading">
+        <div class="links-head">
+          <h2 class="duotone-text" id="links-heading" hidden></h2>
+          <p id="links-note">Listen &amp;Watch below</p>
+        </div>
+
+        <nav id="link-list" class="link-list" aria-label="配信プラットフォームリンク"></nav>
+      </section>
+
+      <footer class="footer-row">
+        <p class="footer-copy" id="footer-copy" hidden></p>
+        <p class="copyright">© <span id="year"></span> <span id="copyright-name">Rainau</span></p>
+      </footer>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

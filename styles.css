@@ -1,0 +1,549 @@
+:root {
+  --green: #2d7d5a;
+  --green-deep: #1a543b;
+  --green-soft: #ddf1e6;
+  --purple: #7553bf;
+  --purple-deep: #4e3486;
+  --purple-soft: #ece5ff;
+  --ink: #312b37;
+  --muted: #6a6472;
+  --paper: rgba(255, 252, 248, 0.72);
+  --paper-strong: rgba(255, 253, 250, 0.88);
+  --line: rgba(69, 53, 98, 0.12);
+  --shadow: 0 34px 80px rgba(52, 39, 63, 0.16);
+  --radius-xl: 34px;
+  --radius-lg: 26px;
+  --radius-md: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  color: var(--ink);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.95), transparent 22%),
+    radial-gradient(circle at 84% 14%, rgba(233, 223, 255, 0.64), transparent 28%),
+    radial-gradient(circle at 82% 84%, rgba(215, 242, 227, 0.58), transparent 28%),
+    linear-gradient(145deg, #fbf4ef 0%, #f6efe9 44%, #f2ecf4 100%);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -6;
+  content: "";
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: radial-gradient(rgba(73, 63, 82, 0.16) 0.8px, transparent 0.8px);
+  background-size: 16px 16px;
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(45, 125, 90, 0.08), transparent 22%, transparent 74%, rgba(117, 83, 191, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 18%);
+}
+
+.ambient {
+  position: fixed;
+  z-index: -4;
+  pointer-events: none;
+  filter: blur(18px);
+}
+
+.ambient-a {
+  top: 5%;
+  left: -40px;
+  width: 240px;
+  height: 240px;
+  border-radius: 53% 47% 40% 60%;
+  background: radial-gradient(circle at 34% 36%, rgba(255, 255, 255, 0.92), rgba(221, 241, 230, 0.18));
+}
+
+.ambient-b {
+  right: -36px;
+  bottom: -30px;
+  width: 260px;
+  height: 260px;
+  border-radius: 48% 52% 58% 42%;
+  background: radial-gradient(circle at 38% 38%, rgba(239, 232, 255, 0.84), rgba(117, 83, 191, 0.14));
+}
+
+.ambient-c {
+  top: 28%;
+  right: 12%;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 229, 238, 0.56), rgba(255, 229, 238, 0));
+}
+
+.page {
+  min-height: 100vh;
+  padding: clamp(0.9rem, 3vw, 2rem);
+  display: grid;
+  place-items: center;
+}
+
+.profile-layout {
+  position: relative;
+  width: min(100%, 1180px);
+  display: grid;
+  grid-template-columns: minmax(118px, 0.84fr) minmax(0, 1fr);
+  grid-template-areas:
+    "visual intro"
+    "links links"
+    "footer footer";
+  gap: 0.95rem;
+  padding: clamp(0.95rem, 2.8vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(145deg, rgba(255, 253, 250, 0.74), rgba(248, 243, 251, 0.84));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  isolation: isolate;
+  backdrop-filter: blur(14px);
+}
+
+.profile-layout::before {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(117, 83, 191, 0.08);
+  border-radius: calc(var(--radius-xl) - 12px);
+  content: "";
+  pointer-events: none;
+}
+
+.profile-layout::after {
+  position: absolute;
+  inset: auto -10% -25% 42%;
+  height: 220px;
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(238, 229, 255, 0.62), transparent 68%);
+  z-index: -1;
+}
+
+.visual-column,
+.intro-block,
+.links-panel,
+.footer-row {
+  position: relative;
+  z-index: 1;
+}
+
+.visual-column {
+  grid-area: visual;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.8rem;
+  min-width: 0;
+  min-height: 100%;
+}
+
+.badge {
+  margin: 0;
+  width: fit-content;
+  padding: 0.42rem 0.82rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.64);
+  box-shadow: 0 12px 22px rgba(72, 58, 96, 0.08);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-family: "League Spartan", "Zen Kaku Gothic New", sans-serif;
+  text-transform: uppercase;
+}
+
+.hero-media {
+  position: relative;
+  margin: 0;
+  height: 100%;
+  min-height: 280px;
+  aspect-ratio: 0.64;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: linear-gradient(140deg, rgba(221, 241, 230, 0.92), rgba(241, 233, 255, 0.96));
+  box-shadow: 0 22px 40px rgba(59, 48, 72, 0.16);
+}
+
+.hero-media::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 32%, transparent 64%, rgba(52, 36, 72, 0.12)),
+    linear-gradient(135deg, rgba(45, 125, 90, 0.14), transparent 38%, rgba(117, 83, 191, 0.16));
+}
+
+.hero-media::after {
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: calc(var(--radius-lg) - 14px);
+  content: "";
+  pointer-events: none;
+}
+
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.intro-block {
+  grid-area: intro;
+  display: grid;
+  align-content: start;
+  gap: 0.45rem;
+  padding-top: 0.15rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  font-family: "League Spartan", "Zen Kaku Gothic New", sans-serif;
+  text-transform: uppercase;
+}
+
+.roman-name {
+  margin: 0;
+  color: rgba(49, 43, 55, 0.68);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+
+h1 {
+  margin: 0;
+  font-family: "League Spartan", "Zen Kaku Gothic New", sans-serif;
+  font-size: clamp(2.6rem, 8.8vw, 6.4rem);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  margin: 0;
+  max-width: 30ch;
+  color: rgba(49, 43, 55, 0.86);
+  font-size: clamp(0.94rem, 1.5vw, 1.08rem);
+  line-height: 1.9;
+}
+
+.links-panel {
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: var(--radius-md);
+  box-shadow: 0 16px 30px rgba(67, 55, 81, 0.08);
+}
+
+.links-panel {
+  grid-area: links;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.links-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  margin-bottom: 0.92rem;
+}
+
+.links-head h2,
+.links-head p {
+  margin: 0;
+}
+
+.links-head h2 {
+  font-family: "League Spartan", "Zen Kaku Gothic New", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.links-head p {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.link-list {
+  display: grid;
+  gap: 0.82rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.link-button {
+  position: relative;
+  min-height: 102px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.02rem;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(249, 245, 252, 0.94));
+  box-shadow: 0 16px 32px rgba(60, 46, 75, 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.link-button::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    linear-gradient(120deg, rgba(45, 125, 90, 0.12), transparent 42%, rgba(117, 83, 191, 0.16)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 34%);
+}
+
+.link-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.link-icon {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  padding: 0.26rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(69, 53, 98, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 12px 24px rgba(65, 49, 89, 0.1);
+}
+
+.link-icon svg {
+  width: 1.85rem;
+  height: 1.85rem;
+  display: block;
+}
+
+.link-text {
+  min-width: 0;
+  display: grid;
+  gap: 0.22rem;
+}
+
+.link-label {
+  font-family: "League Spartan", "Zen Kaku Gothic New", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+}
+
+.link-meta {
+  color: var(--muted);
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
+.link-arrow {
+  min-width: 64px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0.42rem 0.72rem;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(90deg, var(--green), var(--purple));
+  font-size: 0.67rem;
+  font-weight: 700;
+  font-family: "League Spartan", "Zen Kaku Gothic New", sans-serif;
+  letter-spacing: 0.16em;
+}
+
+.link-button:hover,
+.link-button:focus-visible {
+  outline: none;
+  transform: translateY(-4px);
+  border-color: rgba(117, 83, 191, 0.22);
+  box-shadow: 0 22px 36px rgba(60, 46, 75, 0.12);
+}
+
+.link-button:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.96),
+    0 0 0 6px rgba(117, 83, 191, 0.28);
+}
+
+.footer-row {
+  grid-area: footer;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem 1rem;
+  padding: 0 0.15rem;
+  color: rgba(49, 43, 55, 0.72);
+  font-size: 0.76rem;
+}
+
+.footer-copy,
+.copyright {
+  margin: 0;
+}
+
+.duotone-text {
+  background: linear-gradient(90deg, var(--green-deep) 0 44%, var(--purple-deep) 44% 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+body.is-ready .profile-layout {
+  animation: card-in 620ms cubic-bezier(0.18, 0.9, 0.2, 1);
+}
+
+body.is-ready .hero-media {
+  animation: visual-in 700ms cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+body.is-ready .link-button {
+  opacity: 0;
+  animation: button-in 560ms cubic-bezier(0.2, 1, 0.2, 1) forwards;
+  animation-delay: calc(var(--order, 1) * 90ms + 160ms);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes visual-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes button-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (min-width: 920px) {
+  .profile-layout {
+    grid-template-columns: minmax(300px, 0.92fr) minmax(0, 1.08fr);
+    grid-template-areas:
+      "visual intro"
+      "visual links"
+      "visual footer";
+    gap: 1rem 1.35rem;
+  }
+
+  .hero-media {
+    aspect-ratio: auto;
+    min-height: 560px;
+  }
+
+  .links-panel {
+    align-self: end;
+  }
+}
+
+@media (max-width: 720px) {
+  .profile-layout {
+    grid-template-columns: minmax(116px, 0.8fr) minmax(0, 1fr);
+  }
+
+  .links-panel {
+    padding: 0.92rem;
+  }
+
+  .link-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .page {
+    padding: 0.65rem;
+  }
+
+  .profile-layout {
+    grid-template-columns: 104px 1fr;
+    gap: 0.78rem;
+    border-radius: 28px;
+    padding: 0.88rem;
+  }
+
+  .hero-media {
+    min-height: 250px;
+  }
+
+  .badge,
+  .eyebrow,
+  .links-head h2 {
+    letter-spacing: 0.12em;
+  }
+
+  .roman-name {
+    letter-spacing: 0.26em;
+  }
+
+  .link-button {
+    min-height: 94px;
+    padding: 0.92rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
