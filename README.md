@@ -5,8 +5,9 @@
 ## カスタマイズ箇所
 
 - テキストやリンク先は `script.js` の `PROFILE` を編集
-- メイン画像は `hero-photo.jpg` を置くと最優先で使われる
+- メイン画像は `hero-photo.png` を置くと最優先で使われる
 - 既存の予備画像は `rainau-profile.jpg` と `rainau-profile.png`
+- フォントは外部読込をやめて、端末内のローカルフォントだけを使う構成
 
 ## GitHub Pages で公開する手順
 
